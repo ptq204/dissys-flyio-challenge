@@ -137,7 +137,6 @@ func (g *GossipServer) broadCastHandler(msg maelstrom.Message) error {
 	} else {
 		g.broadCastNeighbors(msg, body)
 	}
-
 	g.storeMessage(msgNum)
 
 	return g.node.Reply(msg, resp)
