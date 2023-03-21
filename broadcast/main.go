@@ -59,7 +59,7 @@ func NewGossipServer() *GossipServer {
 	}
 
 	pool := make(workerPool, 0)
-	for i:=0; i<WorkerNum; i++ {
+	for i := 0; i < WorkerNum; i++ {
 		w := NewBroadcastWorker(i, server.broadCastNeighbors)
 		w.start(server.queue)
 		pool = append(pool, w)
@@ -69,11 +69,11 @@ func NewGossipServer() *GossipServer {
 	return server
 }
 
-func NewBroadcastWorker(idx int, handler func (message maelstrom.Message, body broadcastBody)) *broadcastWorker {
+func NewBroadcastWorker(idx int, handler func(message maelstrom.Message, body broadcastBody)) *broadcastWorker {
 	return &broadcastWorker{
-		id: idx,
+		id:            idx,
 		broadcastFunc: handler,
-		quitChan: make(chan struct{}),
+		quitChan:      make(chan struct{}),
 	}
 }
 
